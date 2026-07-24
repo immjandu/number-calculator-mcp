@@ -7,7 +7,7 @@ from typing import List
 from pydantic import BaseModel, Field, ConfigDict
 from mcp.server.fastmcp import FastMCP
 
-mcp = FastMCP("calculator_mcp")
+mcp = FastMCP("calculator_mcp", host="0.0.0.0", port=8000)
 
 
 class NumberListInput(BaseModel):
@@ -139,4 +139,4 @@ async def calculate_sum_and_product(params: NumberListInput) -> str:
 
 
 if __name__ == "__main__":
-    mcp.run(transport="streamable-http", host="0.0.0.0", port=8000)
+    mcp.run(transport="streamable-http")
